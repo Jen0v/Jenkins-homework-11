@@ -1,37 +1,37 @@
 package tests;
 
+
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
-import pages.RegistrationPage;
+import org.junit.jupiter.api.*;
+import pages.DemoqaFormPage;
 
 import static io.qameta.allure.Allure.step;
 
+
 public class DemoqaFormTest extends TestBase {
 
-    private final RegistrationPage demoqaFormPage = new RegistrationPage();
+    private final DemoqaFormPage demoqaFormPage = new DemoqaFormPage();
 
-    String firstName = "Petrov",
-            lastName = "Ivan",
-            userEmail = "ivan@yandex.com",
-            gender = "Male",
+    String firstName = "Anna",
+            lastName = "Jen",
+            userEmail = "anna@gmail.com",
+            gender = "Female",
             userNumber = "9000000001",
             dayOfBirth = "15",
             monthOfBirth = "October",
-            yearOfBirth = "1995",
+            yearOfBirth = "1997",
             subjects = "History",
             hobbies = "Music",
             pictureName = "photo.jpg",
             address = "Some street 1",
-            state = "Haryana",
-            city = "Karnal";
+            state = "NCR",
+            city = "Del";
 
     @Test
     @Tag("fullFormTest")
     @DisplayName("Проверка заполнения всех полей формы")
-    void fullFormTest() {
+    void fullFormRegistrationDemoqaTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         step("Открыть форму", () -> {
@@ -67,7 +67,7 @@ public class DemoqaFormTest extends TestBase {
                 demoqaFormPage.setUserCity(city));
         step("Нажать Submit", demoqaFormPage::clickSubmit);
 
-        step("Проверка заполненных полей", () -> {
+        step("Проверка заполненных полей формы", () -> {
             demoqaFormPage.checkSuccessResult("Student Name", firstName + " " + lastName)
                     .checkSuccessResult("Student Email", userEmail)
                     .checkSuccessResult("Gender", gender)
