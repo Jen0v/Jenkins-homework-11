@@ -13,7 +13,6 @@ public class DemoqaFormTest extends TestBase {
 
     private final DemoqaFormPage demoqaFormPage = new DemoqaFormPage();
 
-
     String firstName = "Anna",
             lastName = "Jen",
             userEmail = "anna@gmail.com",
